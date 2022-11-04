@@ -15,6 +15,8 @@
  * @version 2011.07.31
  */
 
+
+
 public class Game 
 {
     private Parser parser;
@@ -42,7 +44,13 @@ public class Game
         Room lab = new Room("in a computing lab");
         Room office = new Room("in the computing admin office");
         Room cellar = new Room("in the cellar");
-        
+        Item table = new Item("Table", 200);
+
+        office.addItem("table", 20.50);
+
+
+
+
         // initialise room exits
         outside.addExit("north", theater);
         outside.addExit("south", lab);
@@ -61,32 +69,37 @@ public class Game
     /**
      *  Main play routine.  Loops until end of play.
      */
-    public void play() 
-    {            
-        printWelcome();
 
-        // Enter the main command loop.  Here we repeatedly read commands and
-        // execute them until the game is over.
-                
+    /**
+     * Print out the opening message for the player.
+     */
+    /**
+     * Main play routine. Loops until end of play.
+     */
+    public void play()
+    {
+        printWelcome();
+        // Enter the main command loop. Here we repeatedly read
+        // commands and execute them until the game is over.
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("Thank you for playing. Good bye.");
     }
-
     /**
      * Print out the opening message for the player.
      */
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type 'help' if you need help.");
+        System.out.println("Welcome to The World of Zuul!");
+        System.out.println(
+                "Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Type ’help’ if you need help.");
         System.out.println();
-        printLocationInfo();
+        System.out.println(currentRoom.getLongDescription());
     }
 
     /**

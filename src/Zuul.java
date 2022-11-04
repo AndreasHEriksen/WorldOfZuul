@@ -15,6 +15,9 @@ public class Zuul
     {
         Game game = new Game();
         game.play();
+
+        //Item item1 = new Item("Table", 200);
+        //System.out.println(item1);
     }
     
     
